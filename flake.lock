@@ -85,11 +85,11 @@
         "sdl2-src": "sdl2-src"
       },
       "locked": {
-        "lastModified": 1791485102,
-        "narHash": "sha256-90WOtA326leiyn9fBQ7h7064uj36dSWG7F+TwqKqvyI=",
+        "lastModified": 1791487885,
+        "narHash": "sha256-H0v0+0JAnPxNIt8X1wBT5s2WxPhvIuf8NV/o2xZxa5M=",
         "ref": "refs/heads/master",
-        "rev": "c3d12a25e9d74f57f2990fab459de3317023469b",
-        "revCount": 121,
+        "rev": "52d77c83b9e64b61bdb0416857b9503d43cf4e03",
+        "revCount": 136,
         "type": "git",
         "url": "https://github.com/Grumbel/kugelmatch"
       },
