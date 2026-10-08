@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KugelMatch</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Helvetica Neue", Helvetica, Verdana, system-ui, sans-serif;
+      background-color: #0b0b16;
+      background-image: linear-gradient(180deg, #12122a 0%, #07070f 100%);
+      color: #222;
+      line-height: 1.5;
+    }
+
+    #page {
+      width: min(820px, 100%);
+      margin: 0 auto;
+      background: #fff;
+      box-shadow: 0 0 64px rgba(0, 0, 0, 0.85);
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      background: linear-gradient(180deg, #1a1a32 0%, #0b0b16 100%);
+      border-bottom: 4px solid #4a9fff;
+      padding: 1.5rem 1rem 1rem;
+      color: #f0f2f5;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      letter-spacing: 0.04em;
+      color: #7ec8ff;
+      text-shadow: 0 2px 0 #102040;
+    }
+
+    header .tagline {
+      margin: 0.5rem 0 0;
+      color: #a8b0c8;
+      font-size: 1rem;
+    }
+
+    .hero {
+      display: block;
+      width: 100%;
+      height: auto;
+      background: #000;
+    }
+
+    #pagebody {
+      padding: 1.25rem 1.75rem 2rem;
+    }
+
+    section {
+      margin-bottom: 1.75rem;
+    }
+
+    h2 {
+      margin: 0 0 0.5rem;
+      font-size: 1.35rem;
+      color: #1a1a32;
+      border-bottom: 1px solid #e0e4ec;
+      padding-bottom: 0.25rem;
+    }
+
+    section > p {
+      margin: 0.5rem 0 0.75rem;
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    ul {
+      margin: 0.25rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin: 0.35rem 0;
+    }
+
+    a {
+      color: #1a6fd0;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: #0d4a90;
+      text-decoration: underline;
+    }
+
+    .play-btn {
+      display: inline-block;
+      margin: 0.5rem 0 1rem;
+      padding: 0.65rem 1.4rem;
+      background: #3a8eef;
+      color: #fff !important;
+      border-radius: 6px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-decoration: none !important;
+      box-shadow: 0 2px 0 #1a5090;
+    }
+
+    .play-btn:hover {
+      background: #5aa4ff;
+      color: #fff !important;
+    }
+
+    .downloads {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0.75rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    .downloads li {
+      margin: 0;
+      padding: 0.6rem 0.8rem;
+      border: 1px solid #e0e4ec;
+      border-radius: 6px;
+      background: #f8f9fb;
+    }
+
+    .downloads .note {
+      display: block;
+      color: #555;
+      font-size: 0.85rem;
+      font-weight: normal;
+    }
+
+    .version {
+      color: #666;
+      font-size: 0.85rem;
+    }
+
+    code {
+      font-size: 0.9em;
+      background: #f0f2f8;
+      padding: 0.1em 0.35em;
+      border-radius: 3px;
+    }
+
+    footer {
+      background-color: #0b0b16;
+      color: #a0a8b8;
+      font-size: 0.85rem;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      line-height: 1.4;
+    }
+
+    footer a {
+      color: #7ec8ff;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="page">
+    <header>
+      <h1>KugelMatch</h1>
+      <p class="tagline">Raytraced Pong</p>
+    </header>
+
+    <img class="hero" src="images/screenshot.png" alt="KugelMatch — raytraced table tennis">
+
+    <div id="pagebody">
+      <section>
+        <h2>Play in the browser</h2>
+        <p>
+          A real-time raytraced Pong court rendered with a fragment shader on
+          WebGL (OpenGL ES 2.0), or with the software raytracer (F8 switches).
+          Built to WebAssembly with Emscripten and packaged with Nix.
+        </p>
+        <a class="play-btn" href="play/kugelmatch.html">Play KugelMatch (WASM)</a>
+        <ul>
+          <li><a href="https://github.com/Grumbel/kugelmatch">Source code</a></li>
+          <li><a href="https://github.com/Grumbel/kugelmatch#build">Native build (Nix / CMake)</a></li>
+        </ul>
+      </section>
+
+      <section id="download">
+        <h2>Download</h2>
+        <p>
+          Built from the same source as the browser version,
+          <span class="version">version @version@</span>.
+        </p>
+        <ul class="downloads">
+          <li>
+            <a href="downloads/kugelmatch-win64.zip">Windows (64-bit)</a>
+            · <a href="downloads/kugelmatch-win32.zip">32-bit</a>
+            <span class="note">Unzip and start <code>kugelmatch.exe</code>. Windows 7 and later.
+              GPU raytracer by default; <code>--cpu</code> for the software path.</span>
+          </li>
+          <li>
+            <a href="downloads/kugelmatch.apk">Android (APK)</a>
+            <span class="note">Android 7 and later; gamepads and keyboards.
+              Allow installing apps from your browser to install it.</span>
+          </li>
+          <li>
+            <a href="downloads/r36s/kugelmatch.zip">R36S and other PortMaster handhelds</a>
+            <span class="note">OpenGL ES 2.0 GPU raytracer with <code>--scale auto --fps 30</code>
+              defaults. For ArkOS and alike (aarch64): put the zip into
+              <code>ports/PortMaster/autoinstall/</code> and start PortMaster, or unpack it to
+              <code>/roms/ports/</code>.</span>
+          </li>
+          <li>
+            <a href="https://github.com/Grumbel/kugelmatch#build">Linux and other systems</a>
+            <span class="note">Build from source with Nix (<code>nix run github:Grumbel/kugelmatch</code>)
+              or CMake and SDL2.</span>
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>About</h2>
+        <p>
+          Table tennis on a mirrored court, lit by a soft shadow and bounced
+          reflections — drawn every frame by a raytracer, not by meshes.
+          Written in C++17 with SDL2, with two backends that draw the same
+          scene: a CPU raytracer and an OpenGL ES 2.0 fragment-shader raytracer
+          (desktop GL, WebGL, Android, R36S). Sound is synthesised on the fly;
+          there are no image or audio asset packs to ship.
+        </p>
+      </section>
+
+      <section>
+        <h2>Controls</h2>
+        <ul>
+          <li><strong>A / D</strong> or arrow keys — move the near paddle</li>
+          <li><strong>J / L</strong> — far paddle in 2-player mode</li>
+          <li><strong>Space / Enter</strong> — start match / serve</li>
+          <li><strong>P / Esc</strong> — pause</li>
+          <li><strong>F8</strong> — switch renderer (GPU / CPU)</li>
+          <li><strong>F11</strong> — fullscreen</li>
+          <li><strong>1 / 2 / 3</strong> — difficulty</li>
+          <li><strong>C</strong> — camera (paddle / high / sideline)</li>
+          <li><strong>T</strong> — theme</li>
+          <li><strong>M</strong> — mute</li>
+        </ul>
+        <p>
+          Game controllers work through SDL’s game-controller API.
+          On the R36S, Select+Start quits (gptokeyb).
+        </p>
+      </section>
+    </div>
+
+    <footer>
+      <a href="https://github.com/Grumbel/kugelmatch">KugelMatch</a>
+      · GPL-3.0-or-later
+      · site built with Nix, deployed via GitHub Pages
+    </footer>
+  </div>
+</body>
+</html>
